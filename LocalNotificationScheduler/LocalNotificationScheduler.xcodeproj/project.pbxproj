@@ -11,6 +11,9 @@
 		64C91A201C31A8250078A48D /* LocalNotificationScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C91A151C31A8250078A48D /* LocalNotificationScheduler.framework */; };
 		64C91A251C31A8250078A48D /* NotificationSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C91A241C31A8250078A48D /* NotificationSchedulerTests.swift */; };
 		64C91A301C31A97A0078A48D /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C91A2F1C31A97A0078A48D /* NotificationScheduler.swift */; };
+		64C91A321C33C4A30078A48D /* NotificationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C91A311C33C4A30078A48D /* NotificationManagerMock.swift */; };
+		C9F45079B92ED9BD43DF2E2A /* SchedulerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD61C0DD7516147F14E330 /* SchedulerError.swift */; };
+		C9FEE750635176A2E2E0A716 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FF86BBFE47BC9D5143C788 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,9 @@
 		64C91A241C31A8250078A48D /* NotificationSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSchedulerTests.swift; sourceTree = "<group>"; };
 		64C91A261C31A8250078A48D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64C91A2F1C31A97A0078A48D /* NotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		64C91A311C33C4A30078A48D /* NotificationManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerMock.swift; sourceTree = "<group>"; };
+		C9FD61C0DD7516147F14E330 /* SchedulerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerError.swift; sourceTree = "<group>"; };
+		C9FF86BBFE47BC9D5143C788 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,8 @@
 				64C91A181C31A8250078A48D /* LocalNotificationScheduler.h */,
 				64C91A1A1C31A8250078A48D /* Info.plist */,
 				64C91A2F1C31A97A0078A48D /* NotificationScheduler.swift */,
+				C9FD61C0DD7516147F14E330 /* SchedulerError.swift */,
+				C9FF86BBFE47BC9D5143C788 /* NotificationManager.swift */,
 			);
 			path = LocalNotificationScheduler;
 			sourceTree = "<group>";
@@ -85,6 +93,7 @@
 			children = (
 				64C91A241C31A8250078A48D /* NotificationSchedulerTests.swift */,
 				64C91A261C31A8250078A48D /* Info.plist */,
+				64C91A311C33C4A30078A48D /* NotificationManagerMock.swift */,
 			);
 			path = LocalNotificationSchedulerTests;
 			sourceTree = "<group>";
@@ -198,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64C91A301C31A97A0078A48D /* NotificationScheduler.swift in Sources */,
+				C9F45079B92ED9BD43DF2E2A /* SchedulerError.swift in Sources */,
+				C9FEE750635176A2E2E0A716 /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C91A321C33C4A30078A48D /* NotificationManagerMock.swift in Sources */,
 				64C91A251C31A8250078A48D /* NotificationSchedulerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +399,7 @@
 				64C91A2B1C31A8250078A48D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64C91A2C1C31A8250078A48D /* Build configuration list for PBXNativeTarget "LocalNotificationSchedulerTests" */ = {
 			isa = XCConfigurationList;
@@ -395,6 +408,7 @@
 				64C91A2E1C31A8250078A48D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
