@@ -13,6 +13,7 @@
 		64C91A301C31A97A0078A48D /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C91A2F1C31A97A0078A48D /* NotificationScheduler.swift */; };
 		64C91A321C33C4A30078A48D /* NotificationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C91A311C33C4A30078A48D /* NotificationManagerMock.swift */; };
 		C9F45079B92ED9BD43DF2E2A /* SchedulerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD61C0DD7516147F14E330 /* SchedulerError.swift */; };
+		C9F7D7E4BD4716A5591672DB /* UILocalNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCEBE9D8EE6618922962C2 /* UILocalNotification+Extension.swift */; };
 		C9FEE750635176A2E2E0A716 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FF86BBFE47BC9D5143C788 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		64C91A261C31A8250078A48D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64C91A2F1C31A97A0078A48D /* NotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		64C91A311C33C4A30078A48D /* NotificationManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerMock.swift; sourceTree = "<group>"; };
+		C9FCEBE9D8EE6618922962C2 /* UILocalNotification+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILocalNotification+Extension.swift"; sourceTree = "<group>"; };
 		C9FD61C0DD7516147F14E330 /* SchedulerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerError.swift; sourceTree = "<group>"; };
 		C9FF86BBFE47BC9D5143C788 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 				64C91A2F1C31A97A0078A48D /* NotificationScheduler.swift */,
 				C9FD61C0DD7516147F14E330 /* SchedulerError.swift */,
 				C9FF86BBFE47BC9D5143C788 /* NotificationManager.swift */,
+				C9FCEBE9D8EE6618922962C2 /* UILocalNotification+Extension.swift */,
 			);
 			path = LocalNotificationScheduler;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				64C91A301C31A97A0078A48D /* NotificationScheduler.swift in Sources */,
 				C9F45079B92ED9BD43DF2E2A /* SchedulerError.swift in Sources */,
 				C9FEE750635176A2E2E0A716 /* NotificationManager.swift in Sources */,
+				C9F7D7E4BD4716A5591672DB /* UILocalNotification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
