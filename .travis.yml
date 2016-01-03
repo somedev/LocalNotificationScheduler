@@ -1,0 +1,6 @@
+language: swift
+
+script:
+  - xctool -project LocalNotificationScheduler.xcodeproj -scheme LocalNotificationScheduler -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -project LocalNotificationScheduler.xcodeproj -scheme LocalNotificationSchedulerTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  
