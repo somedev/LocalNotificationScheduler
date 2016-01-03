@@ -1,38 +1,46 @@
 //
-//  NotificationManagerMock.swift
-//  LocalNotificationScheduler
-//
-//  Created by Eduard Panasiuk on 12/30/15.
-//  Copyright © 2015 somedev. All rights reserved.
+// Created by Eduard Panasiuk on 12/30/15.
+// Copyright © 2015 somedev. All rights reserved.
 //
 
 import UIKit
 import LocalNotificationScheduler
 
 class NotificationManagerMock: NotificationManager {
-    private var notificationCounter : Int = 0;
+    private var notifications : [UILocalNotification] = [];
     
     var  scheduledLocalNotifications: [UILocalNotification]? {get{
-        var result:[UILocalNotification] = []
-        for _ in 0..<self.notificationCounter {
-            result.append(UILocalNotification())
-        }
-        return result
+        return notifications
         }}
     
     func scheduleLocalNotification(notification: UILocalNotification){
-        self.notificationCounter += 1
+        self.wrapOnMainThread { () -> () in
+            self.notifications.append(notification)
+        }
     }
     
     func cancelLocalNotification(notification: UILocalNotification){
-        self.notificationCounter -= 1
-        if(self.notificationCounter < 0){
-            self.notificationCounter = 0
+        self.wrapOnMainThread { () -> () in
+            if let index = self.notifications.indexOf(notification) {
+                self.notifications.removeAtIndex(index)
+            }
         }
     }
     
     func cancelAllLocalNotifications(){
-        self.notificationCounter = 0
+        self.wrapOnMainThread { () -> () in
+            self.notifications.removeAll()
+        }
+    }
+    
+    private func wrapOnMainThread(action:() -> ()) -> (){
+        if(NSThread.isMainThread()){
+            action()
+        } else {
+            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                action()
+            })
+        }
     }
     
 }
