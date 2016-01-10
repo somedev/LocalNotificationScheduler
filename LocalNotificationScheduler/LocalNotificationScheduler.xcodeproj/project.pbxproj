@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		641854D51C3AF17D0072E76F /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641854D41C3AF17D0072E76F /* NSDate+Extension.swift */; };
+		641854D71C3B01CB0072E76F /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641854D61C3B01CB0072E76F /* TimeOfDay.swift */; };
+		643B36A11C42B80A0072AAB9 /* TimeOfDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643B36A01C42B80A0072AAB9 /* TimeOfDayTests.swift */; };
 		64C91A191C31A8250078A48D /* LocalNotificationScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 64C91A181C31A8250078A48D /* LocalNotificationScheduler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64C91A201C31A8250078A48D /* LocalNotificationScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C91A151C31A8250078A48D /* LocalNotificationScheduler.framework */; };
 		64C91A251C31A8250078A48D /* NotificationSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C91A241C31A8250078A48D /* NotificationSchedulerTests.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		641854D41C3AF17D0072E76F /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
+		641854D61C3B01CB0072E76F /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
+		643B36A01C42B80A0072AAB9 /* TimeOfDayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayTests.swift; sourceTree = "<group>"; };
 		64C91A151C31A8250078A48D /* LocalNotificationScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocalNotificationScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C91A181C31A8250078A48D /* LocalNotificationScheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalNotificationScheduler.h; sourceTree = "<group>"; };
 		64C91A1A1C31A8250078A48D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +93,8 @@
 				C9FD61C0DD7516147F14E330 /* SchedulerError.swift */,
 				C9FF86BBFE47BC9D5143C788 /* NotificationManager.swift */,
 				C9FCEBE9D8EE6618922962C2 /* UILocalNotification+Extension.swift */,
+				641854D41C3AF17D0072E76F /* NSDate+Extension.swift */,
+				641854D61C3B01CB0072E76F /* TimeOfDay.swift */,
 			);
 			path = LocalNotificationScheduler;
 			sourceTree = "<group>";
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				64C91A241C31A8250078A48D /* NotificationSchedulerTests.swift */,
+				643B36A01C42B80A0072AAB9 /* TimeOfDayTests.swift */,
 				64C91A261C31A8250078A48D /* Info.plist */,
 				64C91A311C33C4A30078A48D /* NotificationManagerMock.swift */,
 			);
@@ -209,6 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641854D71C3B01CB0072E76F /* TimeOfDay.swift in Sources */,
+				641854D51C3AF17D0072E76F /* NSDate+Extension.swift in Sources */,
 				64C91A301C31A97A0078A48D /* NotificationScheduler.swift in Sources */,
 				C9F45079B92ED9BD43DF2E2A /* SchedulerError.swift in Sources */,
 				C9FEE750635176A2E2E0A716 /* NotificationManager.swift in Sources */,
@@ -221,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64C91A321C33C4A30078A48D /* NotificationManagerMock.swift in Sources */,
+				643B36A11C42B80A0072AAB9 /* TimeOfDayTests.swift in Sources */,
 				64C91A251C31A8250078A48D /* NotificationSchedulerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
