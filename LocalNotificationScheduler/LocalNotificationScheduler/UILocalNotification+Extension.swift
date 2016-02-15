@@ -9,4 +9,11 @@ public extension UILocalNotification {
     public static func maxNotificationsCount() -> Int{
         return 64
     }
+    
+    public static func notificationWithTime(time:TimeOfDay) -> UILocalNotification{
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate().futureDateWithTime(time)
+        return notification
+    }
 }
+
