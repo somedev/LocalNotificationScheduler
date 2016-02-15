@@ -13,16 +13,12 @@ public extension NSDate {
      - parameter time: time representation
      - returns: NSDate instance
      */
-    public static func futureDateWithHours(time:TimeOfDay) -> NSDate{
-        return NSDate().startOfDay().dateByAddingTimeInterval(time.timeInterval)
-    }
-    
-    private func startOfDay() -> NSDate{
-        let calendar = NSCalendar.currentCalendar()
-        let dateComponents = calendar.components(([NSCalendarUnit.Hour, NSCalendarUnit.Minute]), fromDate: self)
-        dateComponents.second = 0
-        dateComponents.minute = 0
-        dateComponents.hour = 0
-        return dateComponents.date ?? self
+    public func futureDateWithTime(time:TimeOfDay) -> NSDate{
+        let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(self)
+        var result = startOfDay.dateByAddingTimeInterval(time.timeInterval)
+        if(result.compare(self) == NSComparisonResult.OrderedAscending){
+            result = result.dateByAddingTimeInterval(TimeOfDay.oneDayTimeInterval)
+        }
+        return result
     }
 }
