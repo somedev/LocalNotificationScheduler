@@ -21,4 +21,19 @@ public extension NSDate {
         }
         return result
     }
+    
+    /**
+     Returns future date with specific hours, minutes and weekday
+     
+     - parameter time: time representation
+     - returns: NSDate instance
+     */
+    public func futureDateWithTime(time:TimeOfDay, weekday:WeekDays) -> NSDate{
+        let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(self)
+        var result = startOfDay.dateByAddingTimeInterval(time.timeInterval)
+        if(result.compare(self) == NSComparisonResult.OrderedAscending){
+            result = result.dateByAddingTimeInterval(TimeOfDay.oneDayTimeInterval)
+        }
+        return result
+    }
 }
