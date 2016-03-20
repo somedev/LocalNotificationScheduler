@@ -8,21 +8,37 @@
 
 import Foundation
 
-struct WeekDays : OptionSetType {
-    let rawValue: UInt
-    
-    static let Sunday       = WeekDays(rawValue: 1 << 1)
-    static let Monday       = WeekDays(rawValue: 1 << 2)
-    static let Tuesday      = WeekDays(rawValue: 1 << 3)
-    static let Wednesday    = WeekDays(rawValue: 1 << 4)
-    static let Thursday     = WeekDays(rawValue: 1 << 5)
-    static let Friday       = WeekDays(rawValue: 1 << 6)
-    static let Saturday     = WeekDays(rawValue: 1 << 7)
+public enum WeekDays : Int {
+    case None = 0
+    case Sunday = 1
+    case Monday
+    case Tuesday
+    case Wednesday
+    case Thursday
+    case Friday
+    case Saturday
 }
 
+public extension WeekDays {
+    static func week() -> Array<WeekDays>{
+        return [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
+    }
+    
+    static func weekEnd() -> Array<WeekDays>{
+        return [.Saturday, .Sunday]
+    }
+    
+    static func workWeek() -> Array<WeekDays>{
+        return [.Monday, .Tuesday, .Wednesday, .Thursday, .Friday]
+    }
+}
 
-extension WeekDays {
-    static let WeekEnd:WeekDays = [.Sunday, .Saturday]
-    static let WorkWeek:WeekDays = [.Monday, .Tuesday, .Wednesday, .Thursday, .Friday]
-    static let Week:WeekDays = [.Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Sunday, .Saturday]
+public extension NSDate {
+    func weekDay() -> WeekDays{
+        guard let georgianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian) else {
+            return .None
+        }
+        let components = georgianCalendar.components(NSCalendarUnit.Weekday, fromDate: self)
+        return WeekDays(rawValue: components.weekday) ?? .None
+    }
 }

@@ -15,5 +15,14 @@ public extension UILocalNotification {
         notification.fireDate = NSDate().futureDateWithTime(time)
         return notification
     }
+    
+    public static func notificationWithTime(time:TimeOfDay, weekDay:WeekDays, repeatable:Bool = false) -> UILocalNotification{
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate().futureDateWithTime(time, weekDay: weekDay)
+        if(repeatable){
+            notification.repeatInterval = .Weekday
+        }
+        return notification
+    }
 }
 

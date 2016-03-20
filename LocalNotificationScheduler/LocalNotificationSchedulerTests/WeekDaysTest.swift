@@ -1,45 +1,38 @@
+////
+////  WeekDaysTest.swift
+////  LocalNotificationScheduler
+////
+////  Created by Eduard Panasiuk on 2/17/16.
+////  Copyright © 2016 somedev. All rights reserved.
+////
 //
-//  WeekDaysTest.swift
-//  LocalNotificationScheduler
-//
-//  Created by Eduard Panasiuk on 2/17/16.
-//  Copyright © 2016 somedev. All rights reserved.
-//
-
 import XCTest
 @testable import LocalNotificationScheduler
 
 class WeekDaysTest: XCTestCase {
-    func testWeekend(){
-        let weekend = WeekDays.WeekEnd
-        XCTAssertTrue(weekend.contains(.Sunday))
-        XCTAssertTrue(weekend.contains(.Saturday))
-        XCTAssertFalse(weekend.contains(.Monday))
-        XCTAssertFalse(weekend.contains(.Tuesday))
-        XCTAssertFalse(weekend.contains(.Wednesday))
-        XCTAssertFalse(weekend.contains(.Thursday))
-        XCTAssertFalse(weekend.contains(.Friday))
+    func testDayOfWeek(){
+        self.checkDateWithWeekday(1, weekday: .Sunday)
+        self.checkDateWithWeekday(2, weekday: .Monday)
+        self.checkDateWithWeekday(3, weekday: .Tuesday)
+        self.checkDateWithWeekday(4, weekday: .Wednesday)
+        self.checkDateWithWeekday(5, weekday: .Thursday)
+        self.checkDateWithWeekday(6, weekday: .Friday)
+        self.checkDateWithWeekday(7, weekday: .Saturday)
     }
     
-    func testWorkWeek(){
-        let weekend = WeekDays.WorkWeek
-        XCTAssertFalse(weekend.contains(.Sunday))
-        XCTAssertFalse(weekend.contains(.Saturday))
-        XCTAssertTrue(weekend.contains(.Monday))
-        XCTAssertTrue(weekend.contains(.Tuesday))
-        XCTAssertTrue(weekend.contains(.Wednesday))
-        XCTAssertTrue(weekend.contains(.Thursday))
-        XCTAssertTrue(weekend.contains(.Friday))
+    //MARK: - private helpers
+    private func checkDateWithWeekday(dayNumber:Int, weekday:WeekDays){
+        guard let georgianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian) else {
+            XCTFail()
+            return
+        }
+        let components = georgianCalendar.components([.Year, .WeekOfMonth, .Hour, .Minute], fromDate: NSDate())
+        components.weekday = dayNumber
+        guard let date = georgianCalendar.dateFromComponents(components) else {
+            XCTFail()
+            return
+        }
+        XCTAssert(date.weekDay().rawValue == weekday.rawValue)
     }
     
-    func testWeek(){
-        let weekend = WeekDays.Week
-        XCTAssertTrue(weekend.contains(.Sunday))
-        XCTAssertTrue(weekend.contains(.Saturday))
-        XCTAssertTrue(weekend.contains(.Monday))
-        XCTAssertTrue(weekend.contains(.Tuesday))
-        XCTAssertTrue(weekend.contains(.Wednesday))
-        XCTAssertTrue(weekend.contains(.Thursday))
-        XCTAssertTrue(weekend.contains(.Friday))
-    }
 }
