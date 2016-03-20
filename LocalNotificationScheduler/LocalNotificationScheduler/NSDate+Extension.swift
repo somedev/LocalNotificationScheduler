@@ -23,17 +23,22 @@ public extension NSDate {
     }
     
     /**
-     Returns future date with specific hours, minutes and weekday
+     Returns an array of future date with specific hours, minutes and weekday
      
+     - parameter time: weekday representation
      - parameter time: time representation
      - returns: NSDate instance
      */
-    public func futureDateWithTime(time:TimeOfDay, weekday:WeekDays) -> NSDate{
-        let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(self)
-        var result = startOfDay.dateByAddingTimeInterval(time.timeInterval)
-        if(result.compare(self) == NSComparisonResult.OrderedAscending){
-            result = result.dateByAddingTimeInterval(TimeOfDay.oneDayTimeInterval)
+    public func futureDateWithTime(time:TimeOfDay, weekDay:WeekDays) -> NSDate{
+        let nextDate = self.futureDateWithTime(time)
+        let nextDateDay = nextDate.weekDay()
+        var diff = weekDay.rawValue - nextDateDay.rawValue
+        if(diff == 0){
+            return nextDate
         }
-        return result
+        if(diff < 0){
+            diff = 7 + diff
+        }
+        return nextDate.dateByAddingTimeInterval(NSTimeInterval(diff) * TimeOfDay.oneDayTimeInterval)
     }
 }

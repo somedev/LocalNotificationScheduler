@@ -18,4 +18,16 @@ class UILocalNotificationExtensionTests: XCTestCase {
         XCTAssertNotNil(notification.fireDate)
         XCTAssertTrue(testDate.compare(notification.fireDate!) == NSComparisonResult.OrderedSame)
     }
+    
+    func testLocalNotificationWithTimeWeekDay(){
+        let weekday = WeekDays.Sunday
+        let time = TimeOfDay(hours: 1, minutes: 2, seconds: 3)
+        let testDate = NSDate().futureDateWithTime(time, weekDay: weekday)
+        let notification = UILocalNotification.notificationWithTime(time, weekDay: weekday)
+        XCTAssertNotNil(notification)
+        XCTAssertNotNil(notification.fireDate)
+        XCTAssertTrue(testDate.compare(notification.fireDate!) == NSComparisonResult.OrderedSame)
+        XCTAssertTrue(notification.fireDate!.weekDay().rawValue == weekday.rawValue)
+    }
+
 }
