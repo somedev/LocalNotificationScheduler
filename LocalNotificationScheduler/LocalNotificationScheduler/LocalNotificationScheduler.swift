@@ -9,15 +9,15 @@ public typealias SceduleOneCallback = (notification:UILocalNotification) -> ()
 public typealias SceduleManyCallback = (notifications:[UILocalNotification]) -> ()
 
 
-public class NotificationScheduler {
+public class LocalNotificationScheduler {
     
     //MARK: - constants
     
     //MARK: - properties
-    public var notificationManager:NotificationManager
+    public var notificationManager: NotificationManagerType
     
     //MARK: - initializer
-    static let sharedInstance = NotificationScheduler()
+    static let sharedInstance = LocalNotificationScheduler()
     private init() {
         self.notificationManager = UIApplication.sharedApplication()
     }

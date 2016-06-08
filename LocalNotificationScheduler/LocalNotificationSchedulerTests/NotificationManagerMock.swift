@@ -6,7 +6,7 @@
 import UIKit
 import LocalNotificationScheduler
 
-class NotificationManagerMock: NotificationManager {
+class NotificationManagerTypeMock: NotificationManagerType {
     private var notifications : [UILocalNotification] = [];
     
     var  scheduledLocalNotifications: [UILocalNotification]? {get{
