@@ -8,15 +8,15 @@ import XCTest
 import Foundation
 @testable import LocalNotificationScheduler
 
-class NotificationSchedulerTests: XCTestCase {
+class LocalNotificationSchedulerTests: XCTestCase {
 
     //MARK: - Constants
-    let scheduler:NotificationScheduler = NotificationScheduler.sharedInstance
+    let scheduler: LocalNotificationScheduler = LocalNotificationScheduler.sharedInstance
 
     //MARK: - Tests
     override func setUp() {
         super.setUp()
-        self.scheduler.notificationManager = NotificationManagerMock()
+        self.scheduler.notificationManager = NotificationManagerTypeMock()
     }
 
     override func tearDown() {
@@ -24,7 +24,7 @@ class NotificationSchedulerTests: XCTestCase {
     }
 
     func testSingleton() {
-        let secondScheduler:NotificationScheduler? = NotificationScheduler.sharedInstance
+        let secondScheduler: LocalNotificationScheduler? = LocalNotificationScheduler.sharedInstance
         XCTAssertNotNil(secondScheduler)
         XCTAssertTrue(self.scheduler === secondScheduler, "Singleton instance should be the same object")
     }
