@@ -10,17 +10,17 @@ public extension UILocalNotification {
         return 64
     }
     
-    public static func notificationWithTime(time:TimeOfDay) -> UILocalNotification{
+    public static func notificationWithTime(_ time:TimeOfDay) -> UILocalNotification{
         let notification = UILocalNotification()
-        notification.fireDate = NSDate().futureDateWithTime(time)
+        notification.fireDate = Date().futureDateWithTime(time)
         return notification
     }
     
-    public static func notificationWithTime(time:TimeOfDay, weekDay:WeekDays, repeatable:Bool = false) -> UILocalNotification{
+    public static func notificationWithTime(_ time:TimeOfDay, weekDay:WeekDays, repeatable:Bool = false) -> UILocalNotification{
         let notification = UILocalNotification()
-        notification.fireDate = NSDate().futureDateWithTime(time, weekDay: weekDay)
+        notification.fireDate = Date().futureDateWithTime(time, weekDay: weekDay)
         if(repeatable){
-            notification.repeatInterval = .Weekday
+            notification.repeatInterval = .weekday
         }
         return notification
     }

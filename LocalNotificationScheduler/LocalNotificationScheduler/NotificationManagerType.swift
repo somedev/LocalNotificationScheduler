@@ -6,8 +6,8 @@
 import UIKit
 
 public protocol NotificationManagerType {
-    func scheduleLocalNotification(notification: UILocalNotification)
-    func cancelLocalNotification(notification: UILocalNotification)
+    func scheduleLocalNotification(_ notification: UILocalNotification)
+    func cancelLocalNotification(_ notification: UILocalNotification)
     func cancelAllLocalNotifications()
     var  scheduledLocalNotifications: [UILocalNotification]? {get}
 }
