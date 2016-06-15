@@ -5,7 +5,7 @@
 
 import Foundation
 
-public extension NSDate {
+public extension Date {
     
     /**
      Returns future date with specific hours, minutes
@@ -13,11 +13,11 @@ public extension NSDate {
      - parameter time: time representation
      - returns: NSDate instance
      */
-    public func futureDateWithTime(time:TimeOfDay) -> NSDate{
-        let startOfDay = NSCalendar.currentCalendar().startOfDayForDate(self)
-        var result = startOfDay.dateByAddingTimeInterval(time.timeInterval)
-        if(result.compare(self) == NSComparisonResult.OrderedAscending){
-            result = result.dateByAddingTimeInterval(TimeOfDay.oneDayTimeInterval)
+    public func futureDateWithTime(_ time:TimeOfDay) -> Date{
+        let startOfDay = Calendar.current().startOfDay(for: self)
+        var result = startOfDay.addingTimeInterval(time.timeInterval)
+        if(result.compare(self) == ComparisonResult.orderedAscending){
+            result = result.addingTimeInterval(TimeOfDay.oneDayTimeInterval)
         }
         return result
     }
@@ -29,7 +29,7 @@ public extension NSDate {
      - parameter time: time representation
      - returns: NSDate instance
      */
-    public func futureDateWithTime(time:TimeOfDay, weekDay:WeekDays) -> NSDate{
+    public func futureDateWithTime(_ time:TimeOfDay, weekDay:WeekDays) -> Date{
         let nextDate = self.futureDateWithTime(time)
         let nextDateDay = nextDate.weekDay()
         var diff = weekDay.rawValue - nextDateDay.rawValue
@@ -39,6 +39,6 @@ public extension NSDate {
         if(diff < 0){
             diff = 7 + diff
         }
-        return nextDate.dateByAddingTimeInterval(NSTimeInterval(diff) * TimeOfDay.oneDayTimeInterval)
+        return nextDate.addingTimeInterval(TimeInterval(diff) * TimeOfDay.oneDayTimeInterval)
     }
 }

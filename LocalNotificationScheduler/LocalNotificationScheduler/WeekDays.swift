@@ -9,36 +9,36 @@
 import Foundation
 
 public enum WeekDays : Int {
-    case None = 0
-    case Sunday = 1
-    case Monday
-    case Tuesday
-    case Wednesday
-    case Thursday
-    case Friday
-    case Saturday
+    case none = 0
+    case sunday = 1
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
 }
 
 public extension WeekDays {
     static func week() -> Array<WeekDays>{
-        return [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
+        return [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
     }
     
     static func weekEnd() -> Array<WeekDays>{
-        return [.Saturday, .Sunday]
+        return [.saturday, .sunday]
     }
     
     static func workWeek() -> Array<WeekDays>{
-        return [.Monday, .Tuesday, .Wednesday, .Thursday, .Friday]
+        return [.monday, .tuesday, .wednesday, .thursday, .friday]
     }
 }
 
-public extension NSDate {
+public extension Date {
     func weekDay() -> WeekDays{
-        guard let georgianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian) else {
-            return .None
+        guard let georgianCalendar = Calendar(calendarIdentifier:Calendar.Identifier.gregorian) else {
+            return .none
         }
-        let components = georgianCalendar.components(NSCalendarUnit.Weekday, fromDate: self)
-        return WeekDays(rawValue: components.weekday) ?? .None
+        let components = georgianCalendar.components(Calendar.Unit.weekday, from: self)
+        return WeekDays(rawValue: components.weekday!) ?? .none
     }
 }

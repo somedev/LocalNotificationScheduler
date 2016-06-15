@@ -5,6 +5,6 @@
 
 import Foundation
 
-enum SchedulerError : ErrorType {
-    case MaxNotificationsCount
+enum SchedulerError : ErrorProtocol {
+    case maxNotificationsCount
 }

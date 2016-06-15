@@ -13,16 +13,16 @@ class NotificationManagerTypeMock: NotificationManagerType {
         return notifications
         }}
     
-    func scheduleLocalNotification(notification: UILocalNotification){
+    func scheduleLocalNotification(_ notification: UILocalNotification){
         self.wrapOnMainThread { () -> () in
             self.notifications.append(notification)
         }
     }
     
-    func cancelLocalNotification(notification: UILocalNotification){
+    func cancelLocalNotification(_ notification: UILocalNotification){
         self.wrapOnMainThread { () -> () in
-            if let index = self.notifications.indexOf(notification) {
-                self.notifications.removeAtIndex(index)
+            if let index = self.notifications.index(of: notification) {
+                self.notifications.remove(at: index)
             }
         }
     }
@@ -33,11 +33,11 @@ class NotificationManagerTypeMock: NotificationManagerType {
         }
     }
     
-    private func wrapOnMainThread(action:() -> ()) -> (){
-        if(NSThread.isMainThread()){
+    private func wrapOnMainThread(_ action:() -> ()) -> (){
+        if(Thread.isMainThread()){
             action()
         } else {
-            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.sync(execute: { () -> Void in
                 action()
             })
         }

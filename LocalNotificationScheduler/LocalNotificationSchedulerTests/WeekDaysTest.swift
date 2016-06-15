@@ -11,24 +11,24 @@ import XCTest
 
 class WeekDaysTest: XCTestCase {
     func testDayOfWeek(){
-        self.checkDateWithWeekday(1, weekday: .Sunday)
-        self.checkDateWithWeekday(2, weekday: .Monday)
-        self.checkDateWithWeekday(3, weekday: .Tuesday)
-        self.checkDateWithWeekday(4, weekday: .Wednesday)
-        self.checkDateWithWeekday(5, weekday: .Thursday)
-        self.checkDateWithWeekday(6, weekday: .Friday)
-        self.checkDateWithWeekday(7, weekday: .Saturday)
+        self.checkDateWithWeekday(1, weekday: .sunday)
+        self.checkDateWithWeekday(2, weekday: .monday)
+        self.checkDateWithWeekday(3, weekday: .tuesday)
+        self.checkDateWithWeekday(4, weekday: .wednesday)
+        self.checkDateWithWeekday(5, weekday: .thursday)
+        self.checkDateWithWeekday(6, weekday: .friday)
+        self.checkDateWithWeekday(7, weekday: .saturday)
     }
     
     //MARK: - private helpers
-    private func checkDateWithWeekday(dayNumber:Int, weekday:WeekDays){
-        guard let georgianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian) else {
+    private func checkDateWithWeekday(_ dayNumber:Int, weekday:WeekDays){
+        guard let georgianCalendar = Calendar(calendarIdentifier:Calendar.Identifier.gregorian) else {
             XCTFail()
             return
         }
-        let components = georgianCalendar.components([.Year, .WeekOfMonth, .Hour, .Minute], fromDate: NSDate())
+        var components = georgianCalendar.components([.year, .weekOfMonth, .hour, .minute], from: Date())
         components.weekday = dayNumber
-        guard let date = georgianCalendar.dateFromComponents(components) else {
+        guard let date = georgianCalendar.date(from: components) else {
             XCTFail()
             return
         }

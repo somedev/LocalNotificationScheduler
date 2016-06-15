@@ -12,21 +12,21 @@ import XCTest
 class UILocalNotificationExtensionTests: XCTestCase {
     func testLocalNotificationWithTime(){
         let time = TimeOfDay(hours: 1, minutes: 2, seconds: 3)
-        let testDate = NSDate().futureDateWithTime(time)
+        let testDate = Date().futureDateWithTime(time)
         let notification = UILocalNotification.notificationWithTime(time)
         XCTAssertNotNil(notification)
         XCTAssertNotNil(notification.fireDate)
-        XCTAssertTrue(testDate.compare(notification.fireDate!) == NSComparisonResult.OrderedSame)
+        XCTAssertTrue(testDate.compare(notification.fireDate!) == ComparisonResult.orderedSame)
     }
     
     func testLocalNotificationWithTimeWeekDay(){
-        let weekday = WeekDays.Sunday
+        let weekday = WeekDays.sunday
         let time = TimeOfDay(hours: 1, minutes: 2, seconds: 3)
-        let testDate = NSDate().futureDateWithTime(time, weekDay: weekday)
+        let testDate = Date().futureDateWithTime(time, weekDay: weekday)
         let notification = UILocalNotification.notificationWithTime(time, weekDay: weekday)
         XCTAssertNotNil(notification)
         XCTAssertNotNil(notification.fireDate)
-        XCTAssertTrue(testDate.compare(notification.fireDate!) == NSComparisonResult.OrderedSame)
+        XCTAssertTrue(testDate.compare(notification.fireDate!) == ComparisonResult.orderedSame)
         XCTAssertTrue(notification.fireDate!.weekDay().rawValue == weekday.rawValue)
     }
 

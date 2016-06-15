@@ -30,35 +30,35 @@ class LocalNotificationSchedulerTests: XCTestCase {
     }
     
     func testSuccessWhenAddingOneNotification(){
-        let expectation  = expectationWithDescription("testSuccessWhenAddingOneNotification")
+        let expectation  = self.expectation(withDescription: "testSuccessWhenAddingOneNotification")
         let note = UILocalNotification()
         XCTAssertNoThrow(try self.scheduler.scheduleNotification(note, callback: {(notification) -> () in
             expectation.fulfill()
             XCTAssertTrue(note === notification, "UILocalNotification instance in callback should be the same object")
         }))
-        waitForExpectationsWithTimeout(0.1) { _ -> Void in }
+        waitForExpectations(withTimeout: 0.1) { _ -> Void in }
     }
     
     func testThrowsWhenAddingOneNotification(){
         let notifications = self.generateMaxNumberNotifications()
-        let expectation  = expectationWithDescription("testThrowsWhenAddingOneNotification")
+        let expectation  = self.expectation(withDescription: "testThrowsWhenAddingOneNotification")
         XCTAssertNoThrow(try self.scheduler.scheduleNotifications(notifications, callback: {(result) -> () in
             expectation.fulfill()
             XCTAssertTrue(notifications.count == result.count, "")
         }))
-        waitForExpectationsWithTimeout(0.1) { _ -> Void in }
+        waitForExpectations(withTimeout: 0.1) { _ -> Void in }
 
         XCTAssertThrows(try self.scheduler.scheduleNotification(UILocalNotification()))
     }
     
     func testSuccessWhenAddingManyNotifications(){
-        let expectation  = expectationWithDescription("testSuccessWhenAddingManyNotifications")
+        let expectation  = self.expectation(withDescription: "testSuccessWhenAddingManyNotifications")
         let notifications = self.generateMaxNumberNotifications()
         XCTAssertNoThrow(try self.scheduler.scheduleNotifications(notifications, callback: {(result) -> () in
             expectation.fulfill()
             XCTAssertTrue(notifications.count == result.count, "")
         }))
-        waitForExpectationsWithTimeout(0.1) { _ -> Void in }
+        waitForExpectations(withTimeout: 0.1) { _ -> Void in }
     }
     
     func testThrowsWhenAddingManyNotifications(){
@@ -82,7 +82,7 @@ class LocalNotificationSchedulerTests: XCTestCase {
 
 
 extension XCTest {
-    func XCTAssertThrows<T>(@autoclosure expression: () throws -> T, _ message: String = "", file: String = __FILE__, line: UInt = __LINE__) {
+    func XCTAssertThrows<T>( _ expression: @autoclosure() throws -> T, _ message: String = "", file: StaticString = #file, line: UInt = #line) {
         do {
             try expression()
             XCTFail("No error to catch! - \(message)", file: file, line: line)
@@ -90,7 +90,7 @@ extension XCTest {
         }
     }
 
-    func XCTAssertNoThrow<T>(@autoclosure expression: () throws -> T, _ message: String = "", file: String = __FILE__, line: UInt = __LINE__) {
+    func XCTAssertNoThrow<T>( _ expression: @autoclosure() throws -> T, _ message: String = "", file: StaticString = #file, line: UInt = #line) {
         do {
             try expression()
         } catch let error {

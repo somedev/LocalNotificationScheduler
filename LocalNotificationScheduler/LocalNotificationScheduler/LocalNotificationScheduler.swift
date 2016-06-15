@@ -19,11 +19,11 @@ public class LocalNotificationScheduler {
     //MARK: - initializer
     static let sharedInstance = LocalNotificationScheduler()
     private init() {
-        self.notificationManager = UIApplication.sharedApplication()
+        self.notificationManager = UIApplication.shared()
     }
     
     //MARK: - public
-    public func scheduleNotification(notification:UILocalNotification, callback:SceduleOneCallback? = nil) throws -> (){
+    public func scheduleNotification(_ notification:UILocalNotification, callback:SceduleOneCallback? = nil) throws -> (){
         try self.scheduleNotifications([notification], callback: {(notifications) -> () in
             if let callback = callback, note = notifications.first {
                 callback(notification:note)
@@ -31,13 +31,13 @@ public class LocalNotificationScheduler {
         })
     }
     
-    public func scheduleNotifications(notifications:[UILocalNotification], callback:SceduleManyCallback? = nil) throws -> () {
+    public func scheduleNotifications(_ notifications:[UILocalNotification], callback:SceduleManyCallback? = nil) throws -> () {
         guard let count = self.notificationManager.scheduledLocalNotifications?.count
             where count + notifications.count <= UILocalNotification.maxNotificationsCount() else {
-                throw SchedulerError.MaxNotificationsCount
+                throw SchedulerError.maxNotificationsCount
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+        DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault).async { () -> Void in
             for notification in notifications {
                 self.notificationManager.scheduleLocalNotification(notification)
             }
