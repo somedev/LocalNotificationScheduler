@@ -5,5 +5,5 @@ sudo: false
 
 script:
   - xcodebuild -project LocalNotificationScheduler/LocalNotificationScheduler.xcodeproj -scheme LocalNotificationScheduler -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xcodebuild test -project LocalNotificationScheduler/LocalNotificationScheduler.xcodeproj -scheme LocalNotificationSchedulerTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10' ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -project LocalNotificationScheduler/LocalNotificationScheduler.xcodeproj -scheme LocalNotificationSchedulerTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' ONLY_ACTIVE_ARCH=NO
   
