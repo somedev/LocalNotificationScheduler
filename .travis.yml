@@ -4,6 +4,6 @@ osx_image: xcode8
 sudo: false
 
 script:
-  - xctool -project LocalNotificationScheduler/LocalNotificationScheduler.xcodeproj -scheme LocalNotificationScheduler -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xctool test -project LocalNotificationScheduler/LocalNotificationScheduler.xcodeproj -scheme LocalNotificationSchedulerTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -project LocalNotificationScheduler/LocalNotificationScheduler.xcodeproj -scheme LocalNotificationScheduler -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -project LocalNotificationScheduler/LocalNotificationScheduler.xcodeproj -scheme LocalNotificationSchedulerTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
   
